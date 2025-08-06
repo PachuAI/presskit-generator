@@ -91,6 +91,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         loading: false,
         error: null,
       })
+      // Redirigir al homepage después del logout
+      window.location.href = '/'
     } catch (error) {
       setAuth(prev => ({ 
         ...prev, 

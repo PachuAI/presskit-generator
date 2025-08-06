@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export function Footer() {
   return (
-    <footer className="border-t border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-950">
+    <footer className="border-t border-[#2D2D2D] bg-[#1A1A1A] dark:border-[#2D2D2D] dark:bg-[#0F0F0F]">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* Brand */}
@@ -13,7 +13,7 @@ export function Footer() {
               </div>
               <span className="font-bold text-xl">ÍTERA PressKit Generator</span>
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400 max-w-md">
+            <p className="text-sm text-[#A0A0A0] dark:text-[#A0A0A0] max-w-md">
               La plataforma definitiva para artistas musicales de LATAM. 
               Crea presskits profesionales en minutos con nuestro generador impulsado por IA.
             </p>
@@ -21,22 +21,22 @@ export function Footer() {
 
           {/* Links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-50 mb-3">
+            <h3 className="text-sm font-semibold text-white dark:text-white mb-3">
               Producto
             </h3>
-            <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <ul className="space-y-2 text-sm text-[#A0A0A0] dark:text-[#A0A0A0]">
               <li>
-                <Link href="/templates" className="hover:text-gray-900 dark:hover:text-gray-50">
+                <Link href="/templates" className="hover:text-[#FF6B35] dark:hover:text-[#FF6B35]">
                   Plantillas
                 </Link>
               </li>
               <li>
-                <Link href="/precios" className="hover:text-gray-900 dark:hover:text-gray-50">
+                <Link href="/precios" className="hover:text-[#FF6B35] dark:hover:text-[#FF6B35]">
                   Precios
                 </Link>
               </li>
               <li>
-                <Link href="/ejemplos" className="hover:text-gray-900 dark:hover:text-gray-50">
+                <Link href="/ejemplos" className="hover:text-[#FF6B35] dark:hover:text-[#FF6B35]">
                   Ejemplos
                 </Link>
               </li>
@@ -45,22 +45,22 @@ export function Footer() {
 
           {/* Support */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-50 mb-3">
+            <h3 className="text-sm font-semibold text-white dark:text-white mb-3">
               Soporte
             </h3>
-            <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <ul className="space-y-2 text-sm text-[#A0A0A0] dark:text-[#A0A0A0]">
               <li>
-                <Link href="/ayuda" className="hover:text-gray-900 dark:hover:text-gray-50">
+                <Link href="/ayuda" className="hover:text-[#FF6B35] dark:hover:text-[#FF6B35]">
                   Ayuda
                 </Link>
               </li>
               <li>
-                <Link href="/contacto" className="hover:text-gray-900 dark:hover:text-gray-50">
+                <Link href="/contacto" className="hover:text-[#FF6B35] dark:hover:text-[#FF6B35]">
                   Contacto
                 </Link>
               </li>
               <li>
-                <Link href="/privacidad" className="hover:text-gray-900 dark:hover:text-gray-50">
+                <Link href="/privacidad" className="hover:text-[#FF6B35] dark:hover:text-[#FF6B35]">
                   Privacidad
                 </Link>
               </li>
@@ -68,13 +68,13 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+        <div className="mt-12 pt-8 border-t border-[#2D2D2D] dark:border-[#2D2D2D]">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-[#A0A0A0] dark:text-[#A0A0A0]">
               © 2025 ÍTERA PressKit Generator. Todos los derechos reservados.
             </p>
             <div className="flex items-center space-x-4 mt-4 md:mt-0">
-              <span className="text-xs text-gray-500 dark:text-gray-500">
+              <span className="text-xs text-[#8D6E63] dark:text-[#8D6E63]">
                 Hecho con ❤️ para artistas de LATAM
               </span>
             </div>

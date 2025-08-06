@@ -61,7 +61,7 @@ export function LoginForm() {
             </div>
           </div>
           <CardTitle>Iniciar Sesión</CardTitle>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <p className="text-sm text-[#8D6E63] dark:text-[#A0A0A0]">
             Ingresa a tu cuenta de ÍTERA PressKit
           </p>
         </CardHeader>
@@ -102,10 +102,10 @@ export function LoginForm() {
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-gray-200 dark:border-gray-700" />
+              <span className="w-full border-t border-[#2D2D2D] dark:border-[#2D2D2D]" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-2 text-gray-500 dark:bg-gray-950 dark:text-gray-400">
+              <span className="bg-white px-2 text-[#8D6E63] dark:bg-[#0F0F0F] dark:text-[#A0A0A0]">
                 o continúa con email
               </span>
             </div>
@@ -154,12 +154,12 @@ export function LoginForm() {
           </form>
 
           <div className="text-center text-sm">
-            <span className="text-gray-600 dark:text-gray-400">
+            <span className="text-[#8D6E63] dark:text-[#A0A0A0]">
               ¿No tienes cuenta?{' '}
             </span>
             <Link
               href="/register"
-              className="font-medium text-[#E53935] hover:underline"
+              className="font-medium text-[#FF6B35] hover:underline"
             >
               Regístrate aquí
             </Link>

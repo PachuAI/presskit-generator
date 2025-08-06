@@ -86,7 +86,7 @@ export function RegisterForm() {
             </div>
           </div>
           <CardTitle>Crear Cuenta</CardTitle>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <p className="text-sm text-[#8D6E63] dark:text-[#A0A0A0]">
             Únete a ÍTERA PressKit y crea presskits profesionales
           </p>
         </CardHeader>
@@ -127,10 +127,10 @@ export function RegisterForm() {
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-gray-200 dark:border-gray-700" />
+              <span className="w-full border-t border-[#2D2D2D] dark:border-[#2D2D2D]" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-2 text-gray-500 dark:bg-gray-950 dark:text-gray-400">
+              <span className="bg-white px-2 text-[#8D6E63] dark:bg-[#0F0F0F] dark:text-[#A0A0A0]">
                 o regístrate con email
               </span>
             </div>
@@ -155,7 +155,7 @@ export function RegisterForm() {
 
             <div className="space-y-2">
               <label htmlFor="fullName" className="text-sm font-medium">
-                Nombre Completo <span className="text-gray-400">(opcional)</span>
+                Nombre Completo <span className="text-[#8D6E63]">(opcional)</span>
               </label>
               <Input
                 id="fullName"
@@ -198,7 +198,7 @@ export function RegisterForm() {
                 required
                 disabled={loading}
               />
-              <p className="text-xs text-gray-500">Mínimo 6 caracteres</p>
+              <p className="text-xs text-[#8D6E63]">Mínimo 6 caracteres</p>
             </div>
 
             <div className="space-y-2">
@@ -227,12 +227,12 @@ export function RegisterForm() {
           </form>
 
           <div className="text-center text-sm">
-            <span className="text-gray-600 dark:text-gray-400">
+            <span className="text-[#8D6E63] dark:text-[#A0A0A0]">
               ¿Ya tienes cuenta?{' '}
             </span>
             <Link
               href="/login"
-              className="font-medium text-[#E53935] hover:underline"
+              className="font-medium text-[#FF6B35] hover:underline"
             >
               Inicia sesión aquí
             </Link>
