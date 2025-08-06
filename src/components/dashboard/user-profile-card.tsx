@@ -1,13 +1,8 @@
-import { User } from '@supabase/supabase-js'
+import { AuthUser, UserProfile } from '../../types/auth'
 import { Card, CardContent } from '../ui'
 
-interface UserProfile {
-  artist_name?: string
-  subscription_status?: string
-}
-
 interface UserProfileCardProps {
-  user: User | null
+  user: AuthUser | null
   profile: UserProfile | null
 }
 
