@@ -1,0 +1,67 @@
+@import 'tailwindcss';
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  /* ÍTERA Design System - Color Variables */
+  :root {
+    /* ÍTERA Brand Colors */
+    --color-itera-orange: #FF6B35;
+    --color-itera-orange-hover: #FF5722;
+    --color-itera-orange-light: #FFB085;
+    --color-itera-orange-dark: #E55A2B;
+    
+    /* ÍTERA Dark Theme */
+    --color-itera-black: #0F0F0F;
+    --color-itera-surface: #1A1A1A;
+    --color-itera-border: #2D2D2D;
+    --color-itera-text: #FFFFFF;
+    --color-itera-text-secondary: #A0A0A0;
+    
+    /* ÍTERA Semantic Colors */
+    --color-itera-success: #4CAF50;
+    --color-itera-warning: #FF9800;
+    --color-itera-error: #F44336;
+    
+    /* ÍTERA Spacing & Borders */
+    --border-radius-itera: 8px;
+    --border-radius-itera-large: 12px;
+    --shadow-itera: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    --shadow-itera-hover: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+
+  /* Dark mode as default for ÍTERA */
+  html {
+    background-color: var(--color-itera-black);
+    color: var(--color-itera-text);
+  }
+
+  /* ÍTERA Typography */
+  .font-itera-heading {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+  }
+  
+  .font-itera-body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+  }
+  
+  .font-itera-code {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
