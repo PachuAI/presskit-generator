@@ -223,9 +223,6 @@ export class PressskitService {
   private static async incrementViewCount(pressskitId: string): Promise<void> {
     const supabase = this.getSupabaseClient()
 
-    await supabase
-      .from('presskits')
-      .update({ view_count: supabase.raw('view_count + 1') })
-      .eq('id', pressskitId)
+    await supabase.rpc('increment_view_count', { presskit_id: pressskitId })
   }
 }
