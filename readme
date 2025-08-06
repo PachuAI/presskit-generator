@@ -1,0 +1,151 @@
+# ITERA PressKit Generator – Product Brief & RITME INICIAL (BMAD-Method Ready)
+
+---
+
+## 🟣 Product Brief
+
+**ÍTERA PressKit Generator** es una plataforma web pensada para DJs, artistas y productores musicales que buscan destacarse con una imagen profesional y moderna, sin fricción ni curvas técnicas.
+
+El objetivo es ofrecer una experiencia futurista y eficiente: onboarding ultra simple, dashboard tipo CRM con menú lateral, y un flujo guiado que permite crear un presskit atractivo (PDF/landing) en minutos a partir de un chat interactivo.  
+ÍTERA es vanguardia tecnológica aplicada al mundo creativo, por eso la UI debe transmitir innovación, claridad y personalidad, sin perder simpleza.
+
+El MVP se centra en dos módulos: un **Pre-Generator** tipo chatbot para guiar y redactar el contenido del presskit, y un **PressKit Generator** que arma la presentación final, lista para descargar o compartir.  
+A futuro, el sistema se prepara para sumar suscripciones pagas con Mercado Pago, un Landing Page Builder visual, y más módulos útiles para artistas.
+
+**Valores clave:**  
+- Vanguardia tecnológica  
+- Minimalismo visual  
+- Accesibilidad (todo en español, pensado para Argentina y Latinoamérica)  
+- Branding ÍTERA: fuerte, cálido, sin tonos fríos, UI moderna y memorable
+
+---
+
+## 🎨 Branding ÍTERA – Paleta de Colores & Lineamientos UI
+
+- **Colores base:**  
+  - **Rojo intenso:** `#E53935` (principal, botones, highlights)  
+  - **Negro absoluto:** `#181316` (fondo, áreas principales)  
+  - **Gris oscuro cálido:** `#23181A` (cards, sidebar, backgrounds secundarios, *nunca azulados*)  
+  - **Blanco puro:** `#FFFFFF` (tipografía, detalles, contrastes)  
+  - **Rojo oscuro:** `#9A1313` (detalles, sombras, estados activos)  
+  - **Violeta-acento** (para dar toques tecnológicos, muy sutil): `#9412FF`  
+
+- **NO usar:**  
+  - Azules, grises azulados ni fríos  
+  - Verde, cyan, celeste, turquesa
+
+- **Tipografía:**  
+  - Sans-serif moderna (ejemplo: Inter, Sora, Space Grotesk, Rubik)  
+  - Textos en blanco o gris claro sobre fondos oscuros
+
+- **UI/UX:**  
+  - Futurista, minimalista, contraste fuerte  
+  - Mucho espacio, cards flotantes, íconos simples  
+  - Todo el diseño comunica “tecnología de avanzada”  
+  - Responsive total: mobile y desktop, sin perder identidad
+
+---
+
+## 🗂 RITME INICIAL – Breakdown Técnico (BMAD-Method)
+
+### 1. Rutas y Estructura General
+
+- `/` (Home pública)
+  - Presentación clara, branding fuerte.
+  - Botones para “Registrarse” / “Iniciar sesión”.
+  - CTA directa y explicación simple.
+- `/login` y `/register`
+  - Google y email.
+  - Mail verification endpoint preparado pero no forzado.
+- `/dashboard`
+  - Layout CRM con sidebar izquierda y header arriba.
+  - Acceso solo autenticado, redirigir si no hay sesión.
+- **Sidebar:**
+  - Pre-Generator (Chatbot)
+  - PressKit Generator
+  - Landing Page Builder (**Próximamente**)
+  - Settings/Perfil
+  - Cerrar sesión
+
+---
+
+### 2. Flujos de Usuario
+
+#### Usuarios anónimos
+- Navegan Home/Login/Register.
+- Al intentar módulos privados, redirige a Login.
+- Acceso a Presskits públicos (`/p/[slug]`).
+
+#### Registro/Login
+- Google/email.
+- Redirecciona a dashboard tras login/registro.
+- Sesión persistente.
+- Logout redirige a Home pública.
+
+#### Dashboard/navegación
+- Sidebar fija.
+- Navegación entre módulos sin perder sesión ni datos.
+- Header muestra nombre/foto.
+
+---
+
+### 3. Módulos MVP
+
+#### Pre-Generator (Chatbot)
+- Chat interactivo para recabar datos del presskit (nombre, bio, géneros, experiencia, redes, links, booking).
+- Edición de respuestas antes de enviar.
+- Botón para “Enviar a PressKit Generator”.
+
+#### PressKit Generator
+- Form editable (con datos del Pre-Generator o vacío).
+- Preview visual en tiempo real.
+- Exportar a PDF o imagen.
+- Guardar en Supabase bajo usuario.
+- Landing pública: `/p/[slug]`.
+
+#### Landing Page Builder (Placeholder)
+- Módulo deshabilitado o mensaje “Próximamente”.
+- Esqueleto preparado.
+
+#### Settings/Perfil
+- Cambiar nombre, email, foto (aunque sea visual).
+- Botón logout.
+
+---
+
+### 4. Funcionalidades Básicas
+
+- Redirecciones según estado de sesión.
+- Mensajes de error claros.
+- UX mobile first.
+- Branding ITERA: UI cálida, moderna, *sin colores fríos*.
+- Presskits públicos vía link único.
+
+---
+
+### 5. Features Futuras
+
+- **Mercado Pago** para suscripciones/upgrades (Stripe descartado para siempre).
+- **Landing Page Builder** visual.
+- Módulos extra: QRs, estadísticas, custom domains.
+- Email verification obligatoria a futuro.
+- Settings avanzados (password, eliminar cuenta).
+
+---
+
+### 6. Notas para desarrollo
+
+- Modularización: carpetas separadas por feature.
+- Documentar rutas públicas/privadas y flujos.
+- Solo dependencias modernas y estables (Next.js, Supabase, shadcn/ui, Tailwind, react-pdf/html2canvas).
+- 100% deployable en Vercel, funciona en free tier.
+
+---
+
+## 🚩 Resumen final  
+Plataforma SaaS minimal, onboarding sin fricción, dashboard futurista, presskits en minutos.  
+Branding fuerte, UX memorable, código listo para escalar y vender.  
+Toda decisión de diseño y tecnología debe transmitir vanguardia, **cero tonos fríos**.
+
+---
+
