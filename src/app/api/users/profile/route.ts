@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server'
 import { UserService } from '@/lib/services/user-service'
+import { createErrorResponse, createSuccessResponse, handleApiError } from '@/lib/utils/api-response'
 import { UserProfileUpdateSchema } from '@/lib/validation/schemas'
-import { createSuccessResponse, handleApiError, createErrorResponse } from '@/lib/utils/api-response'
 
 export async function GET(_request: NextRequest) {
   try {

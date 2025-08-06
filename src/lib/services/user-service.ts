@@ -1,5 +1,5 @@
-import { createClient } from '../supabase/client'
 import { UserProfile, UserProfileUpdate } from '../../types/auth'
+import { createClient } from '../supabase/client'
 import { UserProfileUpdateSchema } from '../validation/schemas'
 
 export class UserService {

@@ -1,5 +1,5 @@
-import { Card, CardContent } from '../ui'
 import { User } from '@supabase/supabase-js'
+import { Card, CardContent } from '../ui'
 
 interface UserProfile {
   artist_name?: string

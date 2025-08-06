@@ -1,7 +1,7 @@
 import "../styles/tailwind.css"
-import { AuthProvider } from '../hooks/use-auth'
 import { Header } from '../components/layout/header'
 import { Footer } from '../components/layout/footer'
+import { AuthProvider } from '../hooks/use-auth'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

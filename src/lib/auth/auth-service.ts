@@ -1,5 +1,5 @@
 import { createClient } from '../supabase/client'
-import { SignUpData, SignInData } from '../../types/auth'
+import { SignInData, SignUpData } from '../../types/auth'
 
 export class AuthService {
   private static getSupabaseClient() {

@@ -1,6 +1,6 @@
 'use client'
 
-import { Card, CardHeader, CardContent, CardTitle, Button } from '../../components/ui'
+import { Button, Card, CardContent, CardHeader, CardTitle } from '../../components/ui'
 
 const plans = [
   {

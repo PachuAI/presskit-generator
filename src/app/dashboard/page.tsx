@@ -1,10 +1,10 @@
 'use client'
 
-import { useAuth } from '../../hooks/use-auth'
-import { Card, CardHeader, CardContent, CardTitle, Button } from '../../components/ui'
+import Link from 'next/link'
+import { Button, Card, CardContent, CardHeader, CardTitle } from '../../components/ui'
 import { UserProfileCard } from '../../components/dashboard/user-profile-card'
 import { EmptyState } from '../../components/dashboard/empty-state'
-import Link from 'next/link'
+import { useAuth } from '../../hooks/use-auth'
 
 export default function DashboardPage() {
   const { auth } = useAuth()

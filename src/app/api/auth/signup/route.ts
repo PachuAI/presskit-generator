@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server'
 import { AuthService } from '@/lib/auth/auth-service'
-import { SignUpSchema } from '@/lib/validation/schemas'
 import { createSuccessResponse, handleApiError } from '@/lib/utils/api-response'
+import { SignUpSchema } from '@/lib/validation/schemas'
 
 export async function POST(request: NextRequest) {
   try {

@@ -1,10 +1,10 @@
 'use client'
 
-import { useState, useEffect, createContext, useContext } from 'react'
-import { createClient } from '../../lib/supabase/client'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { AuthService } from '../../lib/auth/auth-service'
 import { UserService } from '../../lib/services/user-service'
-import { AuthState, AuthUser, UserProfile, SignUpData, SignInData } from '../../types/auth'
+import { createClient } from '../../lib/supabase/client'
+import { AuthState, AuthUser, SignInData, SignUpData } from '../../types/auth'
 
 const AuthContext = createContext<{
   auth: AuthState

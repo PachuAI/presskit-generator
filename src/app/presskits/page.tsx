@@ -1,7 +1,7 @@
 'use client'
 
-import { Card, CardContent, Button } from '../../components/ui'
 import Link from 'next/link'
+import { Button, Card, CardContent } from '../../components/ui'
 
 function EmptyState() {
   return (

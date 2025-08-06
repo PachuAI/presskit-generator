@@ -1,5 +1,5 @@
-import { createClient } from '../supabase/client'
 import { z } from 'zod'
+import { createClient } from '../supabase/client'
 
 // Presskit schemas
 export const PressskitContentSchema = z.object({
@@ -35,7 +35,7 @@ interface Presskit {
   status: 'draft' | 'published' | 'archived'
   is_public: boolean
   public_slug: string | null
-  content_data: any
+  content_data: unknown
   view_count: number
   download_count: number
   created_at: string

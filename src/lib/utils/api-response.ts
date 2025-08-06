@@ -8,12 +8,12 @@ export interface ApiErrorResponse {
   details?: Record<string, string[]>
 }
 
-export interface ApiSuccessResponse<T = any> {
+export interface ApiSuccessResponse<T = unknown> {
   success: true
   data: T
 }
 
-export type ApiResponse<T = any> = ApiSuccessResponse<T> | ApiErrorResponse
+export type ApiResponse<T = unknown> = ApiSuccessResponse<T> | ApiErrorResponse
 
 export function createErrorResponse(
   error_code: string,

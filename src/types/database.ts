@@ -111,7 +111,7 @@ export interface Database {
           status?: 'draft' | 'published' | 'archived'
           is_public?: boolean
           public_slug?: string | null
-          content_data?: any
+          content_data?: unknown
           view_count?: number
           download_count?: number
           created_at?: string
@@ -127,7 +127,7 @@ export interface Database {
           status?: 'draft' | 'published' | 'archived'
           is_public?: boolean
           public_slug?: string | null
-          content_data?: any
+          content_data?: unknown
           view_count?: number
           download_count?: number
           created_at?: string
@@ -155,7 +155,7 @@ export interface Database {
           name: string
           type: 'basic' | 'electronic' | 'band' | 'solo'
           description?: string | null
-          config_data?: any
+          config_data?: unknown
           is_active?: boolean
           created_at?: string
           updated_at?: string
@@ -165,7 +165,7 @@ export interface Database {
           name?: string
           type?: 'basic' | 'electronic' | 'band' | 'solo'
           description?: string | null
-          config_data?: any
+          config_data?: unknown
           is_active?: boolean
           created_at?: string
           updated_at?: string
@@ -179,7 +179,7 @@ export interface Database {
           user_agent: string | null
           ip_address: string | null
           referrer: string | null
-          metadata: Record<string, any> | null
+          metadata: Record<string, unknown> | null
           created_at: string
         }
         Insert: {
@@ -189,7 +189,7 @@ export interface Database {
           user_agent?: string | null
           ip_address?: string | null
           referrer?: string | null
-          metadata?: Record<string, any> | null
+          metadata?: Record<string, unknown> | null
           created_at?: string
         }
         Update: {
@@ -199,7 +199,7 @@ export interface Database {
           user_agent?: string | null
           ip_address?: string | null
           referrer?: string | null
-          metadata?: Record<string, any> | null
+          metadata?: Record<string, unknown> | null
           created_at?: string
         }
       }

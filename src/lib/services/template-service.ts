@@ -5,7 +5,7 @@ interface Template {
   name: string
   type: 'basic' | 'electronic' | 'band' | 'solo'
   description: string | null
-  config_data: any
+  config_data: unknown
   is_active: boolean
   created_at: string
   updated_at: string

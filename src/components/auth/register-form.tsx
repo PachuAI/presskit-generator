@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { Button, Card, CardContent, CardHeader, CardTitle, Input } from '../ui'
 import { useAuth } from '../../hooks/use-auth'
-import { Button, Input, Card, CardHeader, CardContent, CardTitle } from '../ui'
 
 export function RegisterForm() {
   const router = useRouter()

@@ -1,14 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { Button, Card, CardContent, CardHeader, CardTitle, Input } from '../ui'
 import { useAuth } from '../../hooks/use-auth'
-import { Button, Input, Card, CardHeader, CardContent, CardTitle } from '../ui'
 
 export function LoginForm() {
   const router = useRouter()
-  const { signIn, signInWithGoogle, auth } = useAuth()
+  const { signIn, signInWithGoogle } = useAuth()
   const [formData, setFormData] = useState({
     email: '',
     password: '',

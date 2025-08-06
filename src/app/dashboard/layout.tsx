@@ -1,9 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import { useAuth } from '../../hooks/use-auth'
 import { Button } from '../../components/ui'
 import { Sidebar } from '../../components/layout/sidebar'
+import { useAuth } from '../../hooks/use-auth'
 import { useSidebar } from '../../hooks/use-sidebar'
 
 export default function DashboardLayout({

@@ -1,7 +1,7 @@
 'use client'
 
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui'
 import { useAuth } from '../../hooks/use-auth'
-import { Card, CardHeader, CardContent, CardTitle } from '../../components/ui'
 
 export default function ProfilePage() {
   const { auth } = useAuth()
