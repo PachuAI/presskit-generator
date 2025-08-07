@@ -1,5 +1,5 @@
-import { createClient } from '../supabase/client'
-import { SignInData, SignUpData } from '../../types/auth'
+import { SignInData, SignUpData } from "../../types/auth"
+import { createClient } from "../supabase/client"
 
 export class AuthService {
   private static getSupabaseClient() {
@@ -46,10 +46,10 @@ export class AuthService {
     const supabase = this.getSupabaseClient()
 
     const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
+      provider: "google",
       options: {
-        redirectTo: `${window.location.origin}/auth/callback`
-      }
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
     })
 
     if (error) {
@@ -72,9 +72,12 @@ export class AuthService {
   static async getCurrentUser() {
     const supabase = this.getSupabaseClient()
 
-    const { data: { user }, error } = await supabase.auth.getUser()
+    const {
+      data: { user },
+      error,
+    } = await supabase.auth.getUser()
 
-    if (error && error.message !== 'Auth session missing!') {
+    if (error && error.message !== "Auth session missing!") {
       throw new Error(`Get user failed: ${error.message}`)
     }
 
@@ -84,7 +87,10 @@ export class AuthService {
   static async getSession() {
     const supabase = this.getSupabaseClient()
 
-    const { data: { session }, error } = await supabase.auth.getSession()
+    const {
+      data: { session },
+      error,
+    } = await supabase.auth.getSession()
 
     if (error) {
       throw new Error(`Get session failed: ${error.message}`)

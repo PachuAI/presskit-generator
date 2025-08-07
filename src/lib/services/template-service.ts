@@ -1,9 +1,9 @@
-import { createClient } from '../supabase/client'
+import { createClient } from "../supabase/client"
 
 interface Template {
   id: string
   name: string
-  type: 'basic' | 'electronic' | 'band' | 'solo'
+  type: "basic" | "electronic" | "band" | "solo"
   description: string | null
   config_data: unknown
   is_active: boolean
@@ -19,11 +19,7 @@ export class TemplateService {
   static async getAllTemplates(): Promise<Template[]> {
     const supabase = this.getSupabaseClient()
 
-    const { data: templates, error } = await supabase
-      .from('templates')
-      .select('*')
-      .eq('is_active', true)
-      .order('name')
+    const { data: templates, error } = await supabase.from("templates").select("*").eq("is_active", true).order("name")
 
     if (error) {
       throw new Error(`Failed to get templates: ${error.message}`)
@@ -32,15 +28,15 @@ export class TemplateService {
     return templates || []
   }
 
-  static async getTemplatesByType(type: 'basic' | 'electronic' | 'band' | 'solo'): Promise<Template[]> {
+  static async getTemplatesByType(type: "basic" | "electronic" | "band" | "solo"): Promise<Template[]> {
     const supabase = this.getSupabaseClient()
 
     const { data: templates, error } = await supabase
-      .from('templates')
-      .select('*')
-      .eq('type', type)
-      .eq('is_active', true)
-      .order('name')
+      .from("templates")
+      .select("*")
+      .eq("type", type)
+      .eq("is_active", true)
+      .order("name")
 
     if (error) {
       throw new Error(`Failed to get templates by type: ${error.message}`)
@@ -53,14 +49,14 @@ export class TemplateService {
     const supabase = this.getSupabaseClient()
 
     const { data: template, error } = await supabase
-      .from('templates')
-      .select('*')
-      .eq('id', id)
-      .eq('is_active', true)
+      .from("templates")
+      .select("*")
+      .eq("id", id)
+      .eq("is_active", true)
       .single()
 
     if (error) {
-      if (error.code === 'PGRST116') {
+      if (error.code === "PGRST116") {
         return null
       }
       throw new Error(`Failed to get template: ${error.message}`)

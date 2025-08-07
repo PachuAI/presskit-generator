@@ -1,19 +1,17 @@
-'use client'
+"use client"
 
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui'
-import { useAuth } from '../../hooks/use-auth'
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui"
+import { useAuth } from "../../hooks/use-auth"
 
 export default function ProfilePage() {
   const { auth } = useAuth()
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="mx-auto max-w-4xl">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white font-itera-heading">
-          Perfil de Artista
-        </h1>
-        <p className="text-[#A0A0A0] font-itera-body mt-2">
+        <h1 className="font-itera-heading text-3xl font-bold text-white">Perfil de Artista</h1>
+        <p className="font-itera-body mt-2 text-[#A0A0A0]">
           Completa tu información para obtener mejores resultados con la IA
         </p>
       </div>
@@ -21,22 +19,20 @@ export default function ProfilePage() {
       {/* Profile Card */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-white font-itera-heading">Información Personal</CardTitle>
+          <CardTitle className="font-itera-heading text-white">Información Personal</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-center py-12">
-            <div className="flex size-24 items-center justify-center rounded-full bg-[#FF6B35] text-white font-bold text-4xl mx-auto mb-6">
-              {auth.profile?.artist_name?.charAt(0) || auth.user?.email?.charAt(0) || '?'}
+          <div className="py-12 text-center">
+            <div className="mx-auto mb-6 flex size-24 items-center justify-center rounded-full bg-[#FF6B35] text-4xl font-bold text-white">
+              {auth.profile?.artist_name?.charAt(0) || auth.user?.email?.charAt(0) || "?"}
             </div>
-            <h3 className="text-2xl font-semibold text-white mb-2 font-itera-heading">
-              {auth.profile?.artist_name || 'Nombre de Artista'}
+            <h3 className="font-itera-heading mb-2 text-2xl font-semibold text-white">
+              {auth.profile?.artist_name || "Nombre de Artista"}
             </h3>
-            <p className="text-[#A0A0A0] font-itera-body mb-8">
-              {auth.user?.email}
-            </p>
-            <div className="text-center py-8">
-              <div className="text-6xl mb-4">🚧</div>
-              <p className="text-[#A0A0A0] font-itera-body">
+            <p className="font-itera-body mb-8 text-[#A0A0A0]">{auth.user?.email}</p>
+            <div className="py-8 text-center">
+              <div className="mb-4 text-6xl">🚧</div>
+              <p className="font-itera-body text-[#A0A0A0]">
                 La edición de perfiles estará disponible próximamente.
                 <br />
                 Esta funcionalidad será implementada en historias futuras.

@@ -1,10 +1,10 @@
-'use client'
+"use client"
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { Button } from '../ui'
-import { useAuth } from '../../hooks/use-auth'
-import { logger } from '../../lib/logging/logger'
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { useAuth } from "../../hooks/use-auth"
+import { logger } from "../../lib/logging/logger"
+import { Button } from "../ui"
 
 interface SidebarProps {
   isOpen?: boolean
@@ -16,20 +16,20 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
   const { auth, signOut } = useAuth()
 
   const navigation = [
-    { name: 'Dashboard', href: '/dashboard', icon: '📊' },
-    { name: 'Mis PressKits', href: '/presskits', icon: '🎵' },
-    { name: 'Perfil', href: '/profile', icon: '👤' },
-    { name: 'Suscripción', href: '/subscription', icon: '💳' },
+    { name: "Dashboard", href: "/dashboard", icon: "📊" },
+    { name: "Mis PressKits", href: "/presskits", icon: "🎵" },
+    { name: "Perfil", href: "/profile", icon: "👤" },
+    { name: "Suscripción", href: "/subscription", icon: "💳" },
   ]
 
   const handleSignOut = async () => {
     try {
       await signOut()
     } catch (error) {
-      logger.error('Dashboard sign out failed', { 
-        error: error instanceof Error ? error.message : 'Unknown error',
+      logger.error("Dashboard sign out failed", {
+        error: error instanceof Error ? error.message : "Unknown error",
         userId: auth.user?.id,
-        location: 'dashboard-sidebar'
+        location: "dashboard-sidebar",
       })
     }
   }
@@ -38,38 +38,25 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
     <>
       {/* Mobile backdrop */}
       {isOpen && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-20 lg:hidden"
-          onClick={onClose}
-          aria-hidden="true"
-        />
+        <div className="bg-opacity-50 fixed inset-0 z-20 bg-black lg:hidden" onClick={onClose} aria-hidden="true" />
       )}
 
       {/* Sidebar */}
-      <aside 
-        className={`
-          fixed lg:static inset-y-0 left-0 z-30 w-64
-          bg-[#1A1A1A] border-r border-[#2D2D2D]
-          transform transition-transform duration-200 ease-in-out
-          ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-        `}
+      <aside
+        className={`fixed inset-y-0 left-0 z-30 w-64 transform border-r border-[#2D2D2D] bg-[#1A1A1A] transition-transform duration-200 ease-in-out lg:static ${
+          isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+        } `}
         aria-label="Sidebar navigation"
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-[#2D2D2D]">
+        <div className="flex items-center justify-between border-b border-[#2D2D2D] p-6">
           <div className="flex items-center space-x-2">
-            <div className="flex size-8 items-center justify-center rounded bg-[#FF6B35] text-white font-bold">
-              Í
-            </div>
+            <div className="flex size-8 items-center justify-center rounded bg-[#FF6B35] font-bold text-white">Í</div>
             <span className="font-bold text-white">ÍTERA Dashboard</span>
           </div>
           {/* Mobile close button */}
-          <button 
-            onClick={onClose}
-            className="lg:hidden text-[#A0A0A0] hover:text-white p-2"
-            aria-label="Cerrar menú"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button onClick={onClose} className="p-2 text-[#A0A0A0] hover:text-white lg:hidden" aria-label="Cerrar menú">
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -84,17 +71,16 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`
-                    flex items-center px-3 py-2 rounded-md text-sm font-medium
-                    transition-all duration-200
-                    ${isActive 
-                      ? 'bg-[#FF6B35]/10 text-[#FF6B35] border-l-4 border-[#FF6B35] pl-2' 
-                      : 'text-[#A0A0A0] hover:bg-[#2D2D2D] hover:text-white'
-                    }
-                  `}
-                  aria-current={isActive ? 'page' : undefined}
+                  className={`flex items-center rounded-md px-3 py-2 text-sm font-medium transition-all duration-200 ${
+                    isActive
+                      ? "border-l-4 border-[#FF6B35] bg-[#FF6B35]/10 pl-2 text-[#FF6B35]"
+                      : "text-[#A0A0A0] hover:bg-[#2D2D2D] hover:text-white"
+                  } `}
+                  aria-current={isActive ? "page" : undefined}
                 >
-                  <span className="mr-3 text-lg" aria-hidden="true">{item.icon}</span>
+                  <span className="mr-3 text-lg" aria-hidden="true">
+                    {item.icon}
+                  </span>
                   {item.name}
                 </Link>
               )
@@ -102,20 +88,17 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
           </div>
 
           {/* User info and logout */}
-          <div className="mt-8 pt-6 border-t border-[#2D2D2D]">
+          <div className="mt-8 border-t border-[#2D2D2D] pt-6">
             <div className="mb-4">
               <div className="text-sm text-[#A0A0A0]">Conectado como:</div>
-              <div className="text-white font-medium truncate">
-                {auth.profile?.artist_name || auth.user?.email || 'Usuario'}
+              <div className="truncate font-medium text-white">
+                {auth.profile?.artist_name || auth.user?.email || "Usuario"}
               </div>
             </div>
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              onClick={handleSignOut}
-              className="w-full justify-start"
-            >
-              <span className="mr-3" aria-hidden="true">🚪</span>
+            <Button variant="ghost" size="sm" onClick={handleSignOut} className="w-full justify-start">
+              <span className="mr-3" aria-hidden="true">
+                🚪
+              </span>
               Cerrar Sesión
             </Button>
           </div>

@@ -1,7 +1,7 @@
 import "../styles/tailwind.css"
-import { Header } from '../components/layout/header'
-import { Footer } from '../components/layout/footer'
-import { AuthProvider } from '../hooks/use-auth'
+import { Footer } from "../components/layout/footer"
+import { Header } from "../components/layout/header"
+import { AuthProvider } from "../hooks/use-auth"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,9 +10,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <AuthProvider>
           <div className="flex min-h-screen flex-col">
             <Header />
-            <main className="flex-1">
-              {children}
-            </main>
+            <main className="flex-1">{children}</main>
             <Footer />
           </div>
         </AuthProvider>

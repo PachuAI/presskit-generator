@@ -10,7 +10,7 @@ export interface Database {
           full_name: string | null
           avatar_url: string | null
           bio: string | null
-          subscription_status: 'free' | 'pro' | 'enterprise'
+          subscription_status: "free" | "pro" | "enterprise"
           presskit_limit: number
           social_media: {
             instagram?: string
@@ -34,7 +34,7 @@ export interface Database {
           full_name?: string | null
           avatar_url?: string | null
           bio?: string | null
-          subscription_status?: 'free' | 'pro' | 'enterprise'
+          subscription_status?: "free" | "pro" | "enterprise"
           presskit_limit?: number
           social_media?: {
             instagram?: string
@@ -58,7 +58,7 @@ export interface Database {
           full_name?: string | null
           avatar_url?: string | null
           bio?: string | null
-          subscription_status?: 'free' | 'pro' | 'enterprise'
+          subscription_status?: "free" | "pro" | "enterprise"
           presskit_limit?: number
           social_media?: {
             instagram?: string
@@ -81,8 +81,8 @@ export interface Database {
           user_id: string
           title: string
           artist_name: string
-          template_type: 'basic' | 'electronic' | 'band' | 'solo'
-          status: 'draft' | 'published' | 'archived'
+          template_type: "basic" | "electronic" | "band" | "solo"
+          status: "draft" | "published" | "archived"
           is_public: boolean
           public_slug: string | null
           content_data: {
@@ -107,8 +107,8 @@ export interface Database {
           user_id: string
           title: string
           artist_name: string
-          template_type?: 'basic' | 'electronic' | 'band' | 'solo'
-          status?: 'draft' | 'published' | 'archived'
+          template_type?: "basic" | "electronic" | "band" | "solo"
+          status?: "draft" | "published" | "archived"
           is_public?: boolean
           public_slug?: string | null
           content_data?: unknown
@@ -123,8 +123,8 @@ export interface Database {
           user_id?: string
           title?: string
           artist_name?: string
-          template_type?: 'basic' | 'electronic' | 'band' | 'solo'
-          status?: 'draft' | 'published' | 'archived'
+          template_type?: "basic" | "electronic" | "band" | "solo"
+          status?: "draft" | "published" | "archived"
           is_public?: boolean
           public_slug?: string | null
           content_data?: unknown
@@ -139,7 +139,7 @@ export interface Database {
         Row: {
           id: string
           name: string
-          type: 'basic' | 'electronic' | 'band' | 'solo'
+          type: "basic" | "electronic" | "band" | "solo"
           description: string | null
           config_data: {
             sections: string[]
@@ -153,7 +153,7 @@ export interface Database {
         Insert: {
           id?: string
           name: string
-          type: 'basic' | 'electronic' | 'band' | 'solo'
+          type: "basic" | "electronic" | "band" | "solo"
           description?: string | null
           config_data?: unknown
           is_active?: boolean
@@ -163,7 +163,7 @@ export interface Database {
         Update: {
           id?: string
           name?: string
-          type?: 'basic' | 'electronic' | 'band' | 'solo'
+          type?: "basic" | "electronic" | "band" | "solo"
           description?: string | null
           config_data?: unknown
           is_active?: boolean
@@ -175,7 +175,7 @@ export interface Database {
         Row: {
           id: string
           presskit_id: string | null
-          event_type: 'view' | 'download' | 'share'
+          event_type: "view" | "download" | "share"
           user_agent: string | null
           ip_address: string | null
           referrer: string | null
@@ -185,7 +185,7 @@ export interface Database {
         Insert: {
           id?: string
           presskit_id?: string | null
-          event_type: 'view' | 'download' | 'share'
+          event_type: "view" | "download" | "share"
           user_agent?: string | null
           ip_address?: string | null
           referrer?: string | null
@@ -195,7 +195,7 @@ export interface Database {
         Update: {
           id?: string
           presskit_id?: string | null
-          event_type?: 'view' | 'download' | 'share'
+          event_type?: "view" | "download" | "share"
           user_agent?: string | null
           ip_address?: string | null
           referrer?: string | null
@@ -208,9 +208,9 @@ export interface Database {
           id: string
           user_id: string
           presskit_id: string
-          export_format: 'pdf' | 'zip' | 'json'
+          export_format: "pdf" | "zip" | "json"
           file_size: number | null
-          export_status: 'pending' | 'completed' | 'failed'
+          export_status: "pending" | "completed" | "failed"
           download_url: string | null
           created_at: string
           completed_at: string | null
@@ -219,9 +219,9 @@ export interface Database {
           id?: string
           user_id: string
           presskit_id: string
-          export_format: 'pdf' | 'zip' | 'json'
+          export_format: "pdf" | "zip" | "json"
           file_size?: number | null
-          export_status?: 'pending' | 'completed' | 'failed'
+          export_status?: "pending" | "completed" | "failed"
           download_url?: string | null
           created_at?: string
           completed_at?: string | null
@@ -230,9 +230,9 @@ export interface Database {
           id?: string
           user_id?: string
           presskit_id?: string
-          export_format?: 'pdf' | 'zip' | 'json'
+          export_format?: "pdf" | "zip" | "json"
           file_size?: number | null
-          export_status?: 'pending' | 'completed' | 'failed'
+          export_status?: "pending" | "completed" | "failed"
           download_url?: string | null
           created_at?: string
           completed_at?: string | null
@@ -251,12 +251,12 @@ export interface Database {
       }
     }
     Enums: {
-      subscription_status: 'free' | 'pro' | 'enterprise'
-      template_type: 'basic' | 'electronic' | 'band' | 'solo'
-      presskit_status: 'draft' | 'published' | 'archived'
-      event_type: 'view' | 'download' | 'share'
-      export_format: 'pdf' | 'zip' | 'json'
-      export_status: 'pending' | 'completed' | 'failed'
+      subscription_status: "free" | "pro" | "enterprise"
+      template_type: "basic" | "electronic" | "band" | "solo"
+      presskit_status: "draft" | "published" | "archived"
+      event_type: "view" | "download" | "share"
+      export_format: "pdf" | "zip" | "json"
+      export_status: "pending" | "completed" | "failed"
     }
   }
 }

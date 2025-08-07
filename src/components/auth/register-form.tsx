@@ -1,39 +1,39 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { Button, Card, CardContent, CardHeader, CardTitle, Input } from '../ui'
-import { useAuth } from '../../hooks/use-auth'
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+import { useAuth } from "../../hooks/use-auth"
+import { Button, Card, CardContent, CardHeader, CardTitle, Input } from "../ui"
 
 export function RegisterForm() {
   const router = useRouter()
   const { signUp, signInWithGoogle } = useAuth()
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    confirmPassword: '',
-    artistName: '',
-    fullName: '',
+    email: "",
+    password: "",
+    confirmPassword: "",
+    artistName: "",
+    fullName: "",
   })
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  const [error, setError] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    setError('')
+    setError("")
 
     // Validate passwords match
     if (formData.password !== formData.confirmPassword) {
-      setError('Las contraseñas no coinciden')
+      setError("Las contraseñas no coinciden")
       setLoading(false)
       return
     }
 
     // Validate password strength
     if (formData.password.length < 6) {
-      setError('La contraseña debe tener al menos 6 caracteres')
+      setError("La contraseña debe tener al menos 6 caracteres")
       setLoading(false)
       return
     }
@@ -45,12 +45,12 @@ export function RegisterForm() {
         artist_name: formData.artistName,
         full_name: formData.fullName || undefined,
       })
-      
+
       // Show success message
-      alert('¡Registro exitoso! Revisa tu email para confirmar tu cuenta.')
-      router.push('/login')
+      alert("¡Registro exitoso! Revisa tu email para confirmar tu cuenta.")
+      router.push("/login")
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Error al registrarse')
+      setError(err instanceof Error ? err.message : "Error al registrarse")
     } finally {
       setLoading(false)
     }
@@ -58,21 +58,21 @@ export function RegisterForm() {
 
   const handleGoogleSignIn = async () => {
     setLoading(true)
-    setError('')
+    setError("")
 
     try {
       await signInWithGoogle()
       // Redirection is handled by Google OAuth flow
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Error al registrarse con Google')
+      setError(err instanceof Error ? err.message : "Error al registrarse con Google")
       setLoading(false)
     }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }))
   }
 
@@ -80,8 +80,8 @@ export function RegisterForm() {
     <div className="flex min-h-screen items-center justify-center px-4 py-12">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <div className="flex justify-center mb-4">
-            <div className="flex size-12 items-center justify-center rounded-lg bg-[#E53935] text-white font-bold text-xl">
+          <div className="mb-4 flex justify-center">
+            <div className="flex size-12 items-center justify-center rounded-lg bg-[#E53935] text-xl font-bold text-white">
               Í
             </div>
           </div>
@@ -90,21 +90,16 @@ export function RegisterForm() {
             Únete a ÍTERA PressKit y crea presskits profesionales
           </p>
         </CardHeader>
-        
+
         <CardContent className="space-y-4">
           {error && (
-            <div className="p-3 text-sm text-red-700 bg-red-100 border border-red-300 rounded-md dark:bg-red-900/20 dark:text-red-300 dark:border-red-700">
+            <div className="rounded-md border border-red-300 bg-red-100 p-3 text-sm text-red-700 dark:border-red-700 dark:bg-red-900/20 dark:text-red-300">
               {error}
             </div>
           )}
 
-          <Button
-            variant="outline"
-            className="w-full"
-            onClick={handleGoogleSignIn}
-            disabled={loading}
-          >
-            <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24">
+          <Button variant="outline" className="w-full" onClick={handleGoogleSignIn} disabled={loading}>
+            <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
               <path
                 fill="currentColor"
                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -217,23 +212,14 @@ export function RegisterForm() {
               />
             </div>
 
-            <Button
-              type="submit"
-              className="w-full"
-              disabled={loading}
-            >
-              {loading ? 'Creando cuenta...' : 'Crear Cuenta'}
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? "Creando cuenta..." : "Crear Cuenta"}
             </Button>
           </form>
 
           <div className="text-center text-sm">
-            <span className="text-[#8D6E63] dark:text-[#A0A0A0]">
-              ¿Ya tienes cuenta?{' '}
-            </span>
-            <Link
-              href="/login"
-              className="font-medium text-[#FF6B35] hover:underline"
-            >
+            <span className="text-[#8D6E63] dark:text-[#A0A0A0]">¿Ya tienes cuenta? </span>
+            <Link href="/login" className="font-medium text-[#FF6B35] hover:underline">
               Inicia sesión aquí
             </Link>
           </div>

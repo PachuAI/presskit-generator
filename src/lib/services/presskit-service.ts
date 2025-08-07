@@ -1,23 +1,23 @@
-import { z } from 'zod'
-import { createClient } from '../supabase/client'
+import { z } from "zod"
+import { createClient } from "../supabase/client"
 
 // Presskit schemas
 export const PressskitContentSchema = z.object({
-  biography: z.string().min(10, 'Biografía muy corta').max(5000, 'Biografía muy larga'),
-  genre: z.array(z.string()).min(1, 'Debe especificar al menos un género'),
-  profile_photo: z.string().url('URL de foto de perfil inválida').optional(),
-  press_photos: z.array(z.string().url('URL de foto inválida')).optional(),
-  social_media: z.record(z.string().url('URL de red social inválida')).optional(),
+  biography: z.string().min(10, "Biografía muy corta").max(5000, "Biografía muy larga"),
+  genre: z.array(z.string()).min(1, "Debe especificar al menos un género"),
+  profile_photo: z.string().url("URL de foto de perfil inválida").optional(),
+  press_photos: z.array(z.string().url("URL de foto inválida")).optional(),
+  social_media: z.record(z.string().url("URL de red social inválida")).optional(),
   contact_info: z.object({
-    booking_email: z.string().email('Email de booking inválido'),
-    press_email: z.string().email('Email de prensa inválido').optional(),
+    booking_email: z.string().email("Email de booking inválido"),
+    press_email: z.string().email("Email de prensa inválido").optional(),
   }),
 })
 
 export const CreatePressskitSchema = z.object({
-  title: z.string().min(1, 'Título requerido').max(200, 'Título muy largo'),
-  artist_name: z.string().min(1, 'Nombre de artista requerido').max(100, 'Nombre muy largo'),
-  template_type: z.enum(['basic', 'electronic', 'band', 'solo']),
+  title: z.string().min(1, "Título requerido").max(200, "Título muy largo"),
+  artist_name: z.string().min(1, "Nombre de artista requerido").max(100, "Nombre muy largo"),
+  template_type: z.enum(["basic", "electronic", "band", "solo"]),
   content_data: PressskitContentSchema,
 })
 
@@ -31,8 +31,8 @@ interface Presskit {
   user_id: string
   title: string
   artist_name: string
-  template_type: 'basic' | 'electronic' | 'band' | 'solo'
-  status: 'draft' | 'published' | 'archived'
+  template_type: "basic" | "electronic" | "band" | "solo"
+  status: "draft" | "published" | "archived"
   is_public: boolean
   public_slug: string | null
   content_data: unknown
@@ -51,15 +51,17 @@ export class PressskitService {
   static async getUserPresskits(): Promise<Presskit[]> {
     const supabase = this.getSupabaseClient()
 
-    const { data: { user } } = await supabase.auth.getUser()
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
     if (!user) {
-      throw new Error('User not authenticated')
+      throw new Error("User not authenticated")
     }
 
     const { data: presskits, error } = await supabase
-      .from('presskits')
-      .select('*')
-      .order('created_at', { ascending: false })
+      .from("presskits")
+      .select("*")
+      .order("created_at", { ascending: false })
 
     if (error) {
       throw new Error(`Failed to get presskits: ${error.message}`)
@@ -71,14 +73,10 @@ export class PressskitService {
   static async getPressskitById(id: string): Promise<Presskit | null> {
     const supabase = this.getSupabaseClient()
 
-    const { data: presskit, error } = await supabase
-      .from('presskits')
-      .select('*')
-      .eq('id', id)
-      .single()
+    const { data: presskit, error } = await supabase.from("presskits").select("*").eq("id", id).single()
 
     if (error) {
-      if (error.code === 'PGRST116') {
+      if (error.code === "PGRST116") {
         return null
       }
       throw new Error(`Failed to get presskit: ${error.message}`)
@@ -91,15 +89,15 @@ export class PressskitService {
     const supabase = this.getSupabaseClient()
 
     const { data: presskit, error } = await supabase
-      .from('presskits')
-      .select('*')
-      .eq('public_slug', slug)
-      .eq('is_public', true)
-      .eq('status', 'published')
+      .from("presskits")
+      .select("*")
+      .eq("public_slug", slug)
+      .eq("is_public", true)
+      .eq("status", "published")
       .single()
 
     if (error) {
-      if (error.code === 'PGRST116') {
+      if (error.code === "PGRST116") {
         return null
       }
       throw new Error(`Failed to get public presskit: ${error.message}`)
@@ -114,27 +112,25 @@ export class PressskitService {
   static async createPresskit(data: CreatePressskitData): Promise<Presskit> {
     const supabase = this.getSupabaseClient()
 
-    const { data: { user } } = await supabase.auth.getUser()
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
     if (!user) {
-      throw new Error('User not authenticated')
+      throw new Error("User not authenticated")
     }
 
     // Validar datos
     const validatedData = CreatePressskitSchema.parse(data)
 
     // Obtener user_profile.id
-    const { data: profile } = await supabase
-      .from('user_profiles')
-      .select('id')
-      .eq('auth_user_id', user.id)
-      .single()
+    const { data: profile } = await supabase.from("user_profiles").select("id").eq("auth_user_id", user.id).single()
 
     if (!profile) {
-      throw new Error('User profile not found')
+      throw new Error("User profile not found")
     }
 
     const { data: presskit, error } = await supabase
-      .from('presskits')
+      .from("presskits")
       .insert({
         user_id: profile.id,
         ...validatedData,
@@ -156,9 +152,9 @@ export class PressskitService {
     const validatedUpdates = UpdatePressskitSchema.parse(updates)
 
     const { data: presskit, error } = await supabase
-      .from('presskits')
+      .from("presskits")
       .update(validatedUpdates)
-      .eq('id', id)
+      .eq("id", id)
       .select()
       .single()
 
@@ -173,30 +169,27 @@ export class PressskitService {
     const supabase = this.getSupabaseClient()
 
     // Generar slug único si no existe
-    const { data: current } = await supabase
-      .from('presskits')
-      .select('public_slug, title')
-      .eq('id', id)
-      .single()
+    const { data: current } = await supabase.from("presskits").select("public_slug, title").eq("id", id).single()
 
     let publicSlug = current?.public_slug
     if (!publicSlug) {
       // Generar slug único usando la función de base de datos
-      const { data: slugResult } = await supabase
-        .rpc('generate_unique_slug', { base_title: current?.title || 'presskit' })
+      const { data: slugResult } = await supabase.rpc("generate_unique_slug", {
+        base_title: current?.title || "presskit",
+      })
 
       publicSlug = slugResult
     }
 
     const { data: presskit, error } = await supabase
-      .from('presskits')
+      .from("presskits")
       .update({
-        status: 'published',
+        status: "published",
         is_public: true,
         public_slug: publicSlug,
         published_at: new Date().toISOString(),
       })
-      .eq('id', id)
+      .eq("id", id)
       .select()
       .single()
 
@@ -210,10 +203,7 @@ export class PressskitService {
   static async deletePresskit(id: string): Promise<void> {
     const supabase = this.getSupabaseClient()
 
-    const { error } = await supabase
-      .from('presskits')
-      .delete()
-      .eq('id', id)
+    const { error } = await supabase.from("presskits").delete().eq("id", id)
 
     if (error) {
       throw new Error(`Failed to delete presskit: ${error.message}`)
@@ -223,6 +213,6 @@ export class PressskitService {
   private static async incrementViewCount(pressskitId: string): Promise<void> {
     const supabase = this.getSupabaseClient()
 
-    await supabase.rpc('increment_view_count', { presskit_id: pressskitId })
+    await supabase.rpc("increment_view_count", { presskit_id: pressskitId })
   }
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react"
 
 export function useSidebar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -14,9 +14,9 @@ export function useSidebar() {
     }
 
     checkMobile()
-    window.addEventListener('resize', checkMobile)
+    window.addEventListener("resize", checkMobile)
 
-    return () => window.removeEventListener('resize', checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
   }, [])
 
   const toggle = () => setIsOpen(!isOpen)
@@ -28,6 +28,6 @@ export function useSidebar() {
     isMobile,
     toggle,
     open,
-    close
+    close,
   }
 }

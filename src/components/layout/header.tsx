@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import Link from 'next/link'
-import { Button } from '../ui'
-import { useAuth } from '../../hooks/use-auth'
-import { logger } from '../../lib/logging/logger'
+import Link from "next/link"
+import { useAuth } from "../../hooks/use-auth"
+import { logger } from "../../lib/logging/logger"
+import { Button } from "../ui"
 
 export function Header() {
   const { auth, signOut } = useAuth()
@@ -12,10 +12,10 @@ export function Header() {
     try {
       await signOut()
     } catch (error) {
-      logger.error('Authentication sign out failed', { 
-        error: error instanceof Error ? error.message : 'Unknown error',
+      logger.error("Authentication sign out failed", {
+        error: error instanceof Error ? error.message : "Unknown error",
         userId: auth.user?.id,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       })
     }
   }
@@ -25,37 +25,29 @@ export function Header() {
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between px-4">
         <div className="flex items-center space-x-2">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="flex size-8 items-center justify-center rounded bg-[#FF6B35] text-white font-bold">
-              Í
-            </div>
-            <span className="font-bold text-xl text-white">ÍTERA</span>
+            <div className="flex size-8 items-center justify-center rounded bg-[#FF6B35] font-bold text-white">Í</div>
+            <span className="text-xl font-bold text-white">ÍTERA</span>
           </Link>
         </div>
 
         <nav className="flex items-center space-x-6">
           {auth.user ? (
             <>
-              <Link 
+              <Link
                 href="/dashboard"
-                className="text-sm font-medium text-[#A0A0A0] hover:text-[#FF6B35] transition-colors"
+                className="text-sm font-medium text-[#A0A0A0] transition-colors hover:text-[#FF6B35]"
               >
                 Dashboard
               </Link>
-              <Link 
+              <Link
                 href="/presskits"
-                className="text-sm font-medium text-[#A0A0A0] hover:text-[#FF6B35] transition-colors"
+                className="text-sm font-medium text-[#A0A0A0] transition-colors hover:text-[#FF6B35]"
               >
                 Mis PressKits
               </Link>
               <div className="flex items-center space-x-3">
-                <span className="text-sm text-[#A0A0A0]">
-                  {auth.profile?.artist_name || auth.user.email}
-                </span>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleSignOut}
-                >
+                <span className="text-sm text-[#A0A0A0]">{auth.profile?.artist_name || auth.user.email}</span>
+                <Button variant="outline" size="sm" onClick={handleSignOut}>
                   Cerrar Sesión
                 </Button>
               </div>
@@ -68,9 +60,7 @@ export function Header() {
                 </Button>
               </Link>
               <Link href="/register">
-                <Button size="sm">
-                  Registrarse
-                </Button>
+                <Button size="sm">Registrarse</Button>
               </Link>
             </div>
           )}

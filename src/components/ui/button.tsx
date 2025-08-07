@@ -1,6 +1,6 @@
-import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
+import * as React from "react"
 import { cn } from "../../lib/utils"
 
 const buttonVariants = cva(
@@ -9,9 +9,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-[#FF6B35] text-white hover:bg-[#FF5722] dark:bg-[#FF6B35] dark:text-white dark:hover:bg-[#FF5722]",
-        destructive: "bg-[#F44336] text-white hover:bg-[#D32F2F] dark:bg-[#F44336] dark:text-white dark:hover:bg-[#D32F2F]",
-        outline: "border border-[#2D2D2D] bg-transparent hover:bg-[#2D2D2D] hover:text-white text-[#FF6B35] dark:border-[#2D2D2D] dark:bg-transparent dark:hover:bg-[#2D2D2D] dark:hover:text-white",
-        secondary: "bg-[#2D2D2D] text-white hover:bg-[#1A1A1A] dark:bg-[#2D2D2D] dark:text-white dark:hover:bg-[#1A1A1A]",
+        destructive:
+          "bg-[#F44336] text-white hover:bg-[#D32F2F] dark:bg-[#F44336] dark:text-white dark:hover:bg-[#D32F2F]",
+        outline:
+          "border border-[#2D2D2D] bg-transparent hover:bg-[#2D2D2D] hover:text-white text-[#FF6B35] dark:border-[#2D2D2D] dark:bg-transparent dark:hover:bg-[#2D2D2D] dark:hover:text-white",
+        secondary:
+          "bg-[#2D2D2D] text-white hover:bg-[#1A1A1A] dark:bg-[#2D2D2D] dark:text-white dark:hover:bg-[#1A1A1A]",
         ghost: "hover:bg-[#2D2D2D] hover:text-white text-[#FF6B35] dark:hover:bg-[#2D2D2D] dark:hover:text-white",
         link: "text-[#FF6B35] underline-offset-4 hover:underline dark:text-[#FF6B35]",
       },
@@ -38,13 +41,7 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    )
+    return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
   }
 )
 Button.displayName = "Button"

@@ -1,31 +1,31 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { Button, Card, CardContent, CardHeader, CardTitle, Input } from '../ui'
-import { useAuth } from '../../hooks/use-auth'
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+import { useAuth } from "../../hooks/use-auth"
+import { Button, Card, CardContent, CardHeader, CardTitle, Input } from "../ui"
 
 export function LoginForm() {
   const router = useRouter()
   const { signIn, signInWithGoogle } = useAuth()
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   })
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  const [error, setError] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    setError('')
+    setError("")
 
     try {
       await signIn(formData)
-      router.push('/dashboard')
+      router.push("/dashboard")
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Error al iniciar sesión')
+      setError(err instanceof Error ? err.message : "Error al iniciar sesión")
     } finally {
       setLoading(false)
     }
@@ -33,21 +33,21 @@ export function LoginForm() {
 
   const handleGoogleSignIn = async () => {
     setLoading(true)
-    setError('')
+    setError("")
 
     try {
       await signInWithGoogle()
       // Redirection is handled by Google OAuth flow
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Error al iniciar sesión con Google')
+      setError(err instanceof Error ? err.message : "Error al iniciar sesión con Google")
       setLoading(false)
     }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }))
   }
 
@@ -55,31 +55,24 @@ export function LoginForm() {
     <div className="flex min-h-screen items-center justify-center px-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <div className="flex justify-center mb-4">
-            <div className="flex size-12 items-center justify-center rounded-lg bg-[#E53935] text-white font-bold text-xl">
+          <div className="mb-4 flex justify-center">
+            <div className="flex size-12 items-center justify-center rounded-lg bg-[#E53935] text-xl font-bold text-white">
               Í
             </div>
           </div>
           <CardTitle>Iniciar Sesión</CardTitle>
-          <p className="text-sm text-[#8D6E63] dark:text-[#A0A0A0]">
-            Ingresa a tu cuenta de ÍTERA PressKit
-          </p>
+          <p className="text-sm text-[#8D6E63] dark:text-[#A0A0A0]">Ingresa a tu cuenta de ÍTERA PressKit</p>
         </CardHeader>
-        
+
         <CardContent className="space-y-4">
           {error && (
-            <div className="p-3 text-sm text-red-700 bg-red-100 border border-red-300 rounded-md dark:bg-red-900/20 dark:text-red-300 dark:border-red-700">
+            <div className="rounded-md border border-red-300 bg-red-100 p-3 text-sm text-red-700 dark:border-red-700 dark:bg-red-900/20 dark:text-red-300">
               {error}
             </div>
           )}
 
-          <Button
-            variant="outline"
-            className="w-full"
-            onClick={handleGoogleSignIn}
-            disabled={loading}
-          >
-            <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24">
+          <Button variant="outline" className="w-full" onClick={handleGoogleSignIn} disabled={loading}>
+            <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
               <path
                 fill="currentColor"
                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -144,23 +137,14 @@ export function LoginForm() {
               />
             </div>
 
-            <Button
-              type="submit"
-              className="w-full"
-              disabled={loading}
-            >
-              {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? "Iniciando sesión..." : "Iniciar Sesión"}
             </Button>
           </form>
 
           <div className="text-center text-sm">
-            <span className="text-[#8D6E63] dark:text-[#A0A0A0]">
-              ¿No tienes cuenta?{' '}
-            </span>
-            <Link
-              href="/register"
-              className="font-medium text-[#FF6B35] hover:underline"
-            >
+            <span className="text-[#8D6E63] dark:text-[#A0A0A0]">¿No tienes cuenta? </span>
+            <Link href="/register" className="font-medium text-[#FF6B35] hover:underline">
               Regístrate aquí
             </Link>
           </div>

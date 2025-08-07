@@ -1,4 +1,4 @@
-import { usePathname } from 'next/navigation'
+import { usePathname } from "next/navigation"
 
 export function useActiveRoute() {
   const pathname = usePathname()
@@ -14,6 +14,6 @@ export function useActiveRoute() {
   return {
     pathname,
     isActive,
-    isActivePrefix
+    isActivePrefix,
   }
 }
